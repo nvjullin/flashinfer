@@ -406,7 +406,8 @@ def get_gemm_sm100_module_cutlass_fp8():
                 module.fp8_gemm.default(
                     a,
                     b.transpose(-2, -1),
-                    scale_a * scale_b,
+                    scale_a,
+                    scale_b,
                     out,
                     workspace_buffer,
                     tactic,
@@ -419,7 +420,6 @@ def get_gemm_sm100_module_cutlass_fp8():
     return SimpleNamespace(
         cutlass_fp8_gemm_runner=cutlass_fp8_gemm_runner,
     )
-
 
 def fp8_gemm_sm100(
     a: torch.Tensor,
