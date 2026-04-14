@@ -3620,13 +3620,13 @@ def trtllm_ragged_attention_deepseek(
         If return_lse is True, the output will be a tuple of two tensors, the first is the output tensor, the second is the lse tensor.
         If return_lse is False, the output will be a single tensor.
     """
-    is_dsr1 = query.shape[2] == 192 and key.shape[2] == 192 and value.shape[2] == 128
-    is_smaller_dimensions = (
-        query.shape[2] == 128 and key.shape[2] == 128 and value.shape[2] == 128
-    )
-    assert is_dsr1 or is_smaller_dimensions, (
-        "currently only support deepseek r1 192 query and 128 value or smaller dimensions 128 query and 128 value"
-    )
+    # is_dsr1 = query.shape[2] == 192 and key.shape[2] == 192 and value.shape[2] == 128
+    # is_smaller_dimensions = (
+    #     query.shape[2] == 128 and key.shape[2] == 128 and value.shape[2] == 128
+    # )
+    # assert is_dsr1 or is_smaller_dimensions, (
+    #     "currently only support deepseek r1 192 query and 128 value or smaller dimensions 128 query and 128 value"
+    # )
 
     if enable_pdl is None:
         enable_pdl = device_support_pdl(query.device)
